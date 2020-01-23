@@ -37,6 +37,12 @@ server.use((err, req, res, next) => {
   })
 })
 
-server.listen(port, () => {
-  console.log(`\n=> Server up at http://localhost:${port}\n`)
-})
+// Could also check for the environment
+// Or just have server in seperate file like usual
+if (!module.parent) {
+  server.listen(port, () => {
+    console.log(`\n=> Server up at http://localhost:${port}\n`)
+  })
+}
+
+module.exports = server;
